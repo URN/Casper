@@ -32,6 +32,7 @@ into the {body} of the default.hbs template --}}
             {{#if @site.description}}
                 <p class="site-description">{{@site.description}}</p>
             {{/if}}
+            <audio src="https://live.urn1350.net/listen" id="urn-player" controls="" preload="none"></audio>
         </div>
     {{/match}}
 
@@ -52,3 +53,8 @@ into the {body} of the default.hbs template --}}
 
 </div>
 </main>
+
+<script>
+    let player = document.querySelector("#urn-player");
+    player.src = player.src + "?cache=" + Math.floor(Math.random() * 100000);
+</script>

@@ -8,9 +8,13 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
+      - name: Install Yarn dependencies
+        run: yarn
+      - name: Run `yarn zip`
+        run: yarn zip
       - name: Deploy Ghost Theme
         uses: TryGhost/action-deploy-theme@v1
         with:
-          theme-name: "urn-casper"
+          file: dist/casper.zip
           api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
           api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
